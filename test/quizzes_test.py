@@ -1,5 +1,4 @@
 import unittest
-from datetime import datetime
 
 from app.controllers.quizzes_controller import QuizzesController
 
