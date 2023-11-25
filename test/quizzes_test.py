@@ -14,16 +14,16 @@ class QuizzesTest(unittest.TestCase):
         # clear previosuly generated data
         self.ctrl.clear_data()
 
-        # Generates error in quizzes_controller.py at Line 63
+        # Generates exception in quizzes_controller.py at Line 63
         self.ctrl.add_quiz(None, None, None, None)
 
-    # test exposes the issue of using utf-8 without normalising the string to enable safe utf-8 conversion.
+    # test exposes the issue of using utf-8 without normalising the string which enables safe utf-8 conversion.
     def test_expose_failure_02(self):
         # clear previosuly generated data
         self.ctrl.clear_data()
 
         quiz_id = self.ctrl.add_quiz("A", "B", 1, 1)
-        # Generates error in utils.py at Line 11
+        # Generates exception in utils.py at Line 11, initiating from quizzes_controller at Line 78
         self.ctrl.add_question(quiz_id, '\udbff\udfff', "D")
 
     # test exposes the issue of accepting values that cannot be serialised via a JSON Encoder.
@@ -32,7 +32,7 @@ class QuizzesTest(unittest.TestCase):
         self.ctrl.clear_data()
 
         quiz_id = self.ctrl.add_quiz("A", "B", 1, 1)
-        # Generates error in data_loader.py at Line 21
+        # Generates exception in data_loader.py at Line 21, initiating from quizzes_controller at Line 78
         self.ctrl.add_question(quiz_id, b"some binary string", "D")
 
 
